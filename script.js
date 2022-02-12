@@ -4,24 +4,30 @@ let templates = {};
 let app_div = document.getElementById('app');
 
 function home() {
+    refreshApp();
+    
     let div = document.createElement('div');
     let link = document.createElement('a');
     link.href = '#/about';
     link.innerText = 'About';
 
     div.innerHTML = '<h1>Home</h1>';
+    div.className = 'content-class';
     div.appendChild(link);
 
     app_div.appendChild(div);
 };
 
 function about() {
+    refreshApp();
+
     let div = document.createElement('div');
     let link = document.createElement('a');
     link.href = '#/';
     link.innerText = 'Home';
 
     div.innerHTML = '<h1>About</h1>';
+    div.className = 'content-class';
     div.appendChild(link);
 
     app_div.appendChild(div);
@@ -69,3 +75,10 @@ function router(evt) {
 
 window.addEventListener('load', router);
 window.addEventListener('hashchange', router);
+
+function refreshApp(){
+    let div = document.querySelectorAll('.content-class');
+    if(div.length > 0){
+        app_div.removeChild(div[0]);
+    }
+}
